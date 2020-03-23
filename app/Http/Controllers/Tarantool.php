@@ -18,7 +18,7 @@ class Tarantool extends Controller
 	);
 
 		$space = $client->getSpace(ENV('TARANTOOL_SPACE'));
-		$result = $space->select(Criteria::key([1]));
+		$result = $space->select(Criteria::key([4]));
 
 		print('<pre>');
 		print_r($result);

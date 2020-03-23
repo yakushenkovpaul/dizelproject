@@ -16,3 +16,10 @@ Route::get('/', function () {
 });
 
 Route::get('/tarantool','Tarantool@index');
+
+Route::get('/parser','Parser@index');
+
+
+Route::group(['prefix' => 'admin'], function () {
+    Voyager::routes();
+});
