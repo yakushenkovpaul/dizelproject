@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCategoriesTable extends Migration
+class AddForeignKeysArticulatorProducts extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,10 @@ class CreateCategoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('categories', function (Blueprint $table) {
-						$table->bigIncrements('id');
-						$table->string('title', 255)->unique();
-						$table->mediumText('description');
-						$table->timestamps();
-						$table->softDeletes();
-        });
+			Schema::table('articulator_products', function($table) {
+				$table->foreign('articulator_id')->references('id')->on('articulators');
+				$table->foreign('product_id')->references('id')->on('products');
+			});
     }
 
     /**
@@ -29,6 +26,6 @@ class CreateCategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('categories');
+        //
     }
 }

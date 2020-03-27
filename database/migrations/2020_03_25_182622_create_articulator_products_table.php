@@ -14,10 +14,8 @@ class CreateArticulatorProductsTable extends Migration
     public function up()
     {
         Schema::create('articulator_products', function (Blueprint $table) {
-					$table->bigInteger('articulator_id');
-					$table->bigInteger('product_id');
-					$table->foreign('articulator_id')->references('id')->on('articulators');
-					$table->foreign('product_id')->references('id')->on('products');
+					$table->bigInteger('articulator_id')->unsigned();
+					$table->bigInteger('product_id')->unsigned();
         });
     }
 

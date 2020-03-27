@@ -13,13 +13,14 @@ class CreateSourceProductsTable extends Migration
      */
     public function up()
     {
+			Schema::dropIfExists('source_products');
         Schema::create('source_products', function (Blueprint $table) {
-					$table->integer('source_id');
-					$table->bigInteger('product_id');
-					$table->integer('price');
-					$table->integer('count');
-					$table->foreign('source_id')->references('id')->on('sources');
-					$table->foreign('product_id')->references('id')->on('products');
+					$table->bigIncrements('id');
+					$table->integer('source_id')->unsigned();
+					$table->bigInteger('product_id')->unsigned();
+					$table->integer('price')->default(0);
+					$table->integer('count')->default(0);
+					$table->timestamps();
         });
     }
 

@@ -15,7 +15,8 @@ class CreateArticulatorsTable extends Migration
     {
         Schema::create('articulators', function (Blueprint $table) {
 						$table->bigIncrements('id');
-						$table->string('100')->unique();
+						$table->string('name','100')->unique();
+						$table->timestamps();
         });
     }
 

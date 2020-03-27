@@ -14,10 +14,8 @@ class CreateTagProductsTable extends Migration
     public function up()
     {
         Schema::create('tag_products', function (Blueprint $table) {
-					$table->bigInteger('tag_id');
-					$table->bigInteger('product_id');
-					$table->foreign('tag_id')->references('id')->on('tags');
-					$table->foreign('product_id')->references('id')->on('products');
+					$table->bigInteger('tag_id')->unsigned();
+					$table->bigInteger('product_id')->unsigned();					
         });
     }
 
